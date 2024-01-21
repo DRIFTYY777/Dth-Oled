@@ -51,7 +51,7 @@ void printDHT11(void *pvParameters)
 
     display.display();
 
-    vTaskDelay(pdMS_TO_TICKS(1000)); // Delay for 500 milliseconds
+    vTaskDelay(pdMS_TO_TICKS(1000)); 
   }
 }
 
