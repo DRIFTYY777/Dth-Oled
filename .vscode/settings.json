@@ -291,6 +291,8 @@
     "attack_method.h": "c",
     "attack.h": "c",
     "esp_err.h": "c",
-    "ap_scanner.h": "c"
+    "ap_scanner.h": "c",
+    "array": "cpp",
+    "*.tcc": "cpp"
   }
 }

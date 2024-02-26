@@ -1,13 +1,21 @@
 #include <Arduino.h>
-#include <DHT.h>
+
+#include <core/dht11/dht11.h>
+
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 #include <Adafruit_I2CDevice.h>
 
-#define DHT11PIN 23
+#include <core/battery/battery.h>
+
+#define DHT11PIN 1
+
 
 Adafruit_SSD1306 display(128, 64, &Wire, -1);
-DHT dht(DHT11PIN, DHT11);
+
+DHT dht(DHT11PIN);
+
+Battery battery(1000, 12);
 
 TaskHandle_t Core0Task;
 TaskHandle_t Core1Task;
@@ -51,7 +59,7 @@ void printDHT11(void *pvParameters)
 
     display.display();
 
-    vTaskDelay(pdMS_TO_TICKS(1000)); 
+    vTaskDelay(pdMS_TO_TICKS(2000));
   }
 }
 
@@ -59,27 +67,34 @@ void Task2code(void *pvParameters)
 {
   for (;;)
   {
+    vTaskDelay(pdMS_TO_TICKS(2000));
   }
 }
 
 void setup()
 {
   Serial.begin(115200);
+
   dht.begin();
+  battery.begin();
 
   if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C))
   {
     Serial.println(F("SSD1306 allocation failed"));
-    for (;;)
-      ;
   }
-  delay(2000);
-  display.clearDisplay();
-  display.setTextColor(WHITE);
+  else
+  {
+    Serial.println(F("SSD1306 allocation success"));
+    delay(2000);
+    display.clearDisplay();
+    display.setTextColor(WHITE);
+  }
 }
 
 void loop()
 {
+  // button
+
   xTaskCreatePinnedToCore(
       printDHT11, /* Task function. */
       "Task1",    /* Name of the task. */
@@ -97,6 +112,13 @@ void loop()
       1,          /* Priority of the task. Lower value means lower priority. */
       &Core1Task, /* Task handle to keep track of the created task. */
       1);         /* Pin task to core 1. */
+  delay(1000);
 
-      delay(1000);
+
+
+
+
+
+
+ 
 }
