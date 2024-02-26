@@ -1,9 +1,9 @@
 #include "Battery.h"
 
-Battery::Battery(int l_delay, int l_adc_resolution)
+Battery::Battery(int _l_delay, int _l_adc_resolution)
 {
-    l_delay = u_delay;
-    l_adc_resolution = adc_resolution; 
+    _l_delay = u_delay;
+    _l_adc_resolution = adc_resolution; 
 }
 
 void Battery::begin(void)

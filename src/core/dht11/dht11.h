@@ -2,7 +2,7 @@
 #ifndef DHT_H
 #define DHT_H
 
-#include "Arduino.h"
+#include <core/pins/pins.h>
 
 class DHT
 {

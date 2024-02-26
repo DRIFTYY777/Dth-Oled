@@ -40,7 +40,6 @@ float DHT::readTemperature(bool S, bool force)
 
 float DHT::convertCtoF(float c) { return c * 1.8 + 32; }
 float DHT::convertFtoC(float f) { return (f - 32) * 0.55555; }
-
 float DHT::readHumidity(bool force)
 {
     float f = NAN;
