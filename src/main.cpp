@@ -1,18 +1,18 @@
 #include <Arduino.h>
-#include <core/init.h>
+#include <core/core.h>
 
 
-Init inittt;
+Core core(1000, 1000);
 
 
 
 void setup()
 {
   Serial.begin(115200);
-  inittt.start();
+  core.begin();
 }
 
 void loop()
 {
-  inittt.looper();
+  core.startbothCore();
 }

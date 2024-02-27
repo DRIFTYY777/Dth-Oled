@@ -1,21 +1,25 @@
-
-
 #ifndef _CORE_H
 #define _CORE_H
 
 #include <Arduino.h>
+#include "core/pins/pins.h"
+#include "core/dht11/dht11.h"
+#include "core/ui/ui.h"
+#include "core/battery/battery.h"
 
-TaskHandle_t Core0Task;
-TaskHandle_t Core1Task;
+#define const LOG_TAG "CORE"
 
 class Core
 {
-public:
-    void core_main(void *pvParameters);
 
+public:
+    Core(int c1_delay, int c2_delay);
+    void begin(void);
+    void startbothCore(void);
 private:
-    static void Task1code(void *pvParameters);
-    static void Task2code(void *pvParameters);
+    void readDHTValues(float &temp, float &humi);
+    void button_init();
+    
 };
 
 #endif
