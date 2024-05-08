@@ -4,19 +4,9 @@
 #include <Adafruit_SSD1306.h>
 #include <Adafruit_I2CDevice.h>
 
-
-
-
-
 #define DHT11PIN 1
-#define BATTERY 36
-
-#define ENCODER_PIN_B 35
-#define ENCODER_PIN_A 32
-
 #define BUTTON 34
 #define LED 2
-#define IR_PIN 12
 
 Adafruit_SSD1306 display(128, 64, &Wire, -1);
 DHT dht(DHT11PIN, DHT11);
@@ -71,13 +61,6 @@ void Task2code(void *pvParameters)
 {
   for (;;)
   {
-    if (digitalRead(BUTTON) == HIGH)
-    {
-      // turn on the IR_PIN LED
-    }
-    else
-    {
-    }
   }
 }
 
@@ -123,5 +106,4 @@ void setup()
 
 void loop()
 {
-
 }
